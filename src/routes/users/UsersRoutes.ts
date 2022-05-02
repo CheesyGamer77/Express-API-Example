@@ -1,6 +1,6 @@
 import BaseRouteConfig from "../BaseRouteConfig";
 import express from "express";
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -19,7 +19,7 @@ export default class UsersRoutes extends BaseRouteConfig {
                     where: {
                         id: Number.parseInt(req.params["userId"])
                     }
-                })
+                });
 
                 data != null ? res.status(200).json(data) : res.sendStatus(404);
             })
@@ -28,7 +28,7 @@ export default class UsersRoutes extends BaseRouteConfig {
                     where: {
                         id: Number.parseInt(req.params["userId"])
                     }
-                })
+                });
 
                 res.sendStatus(204);
             });
@@ -37,7 +37,7 @@ export default class UsersRoutes extends BaseRouteConfig {
             .post(async (req, res) => {
                 const data = await prisma.user.create({
                     data: req.body
-                })
+                });
 
                 res.status(201).json(data);
             });
